@@ -1,6 +1,6 @@
-# TeleVip 1.7 — 本地解锁版（社区补丁）
+# TeleVip 1.7.1 — 本地解锁版（社区补丁）
 
-> 这不是官方版本。这是对 **Re: TeleVIP 1.7** 的本地修改版，去掉了
+> 这不是官方版本。这是对 **Re: TeleVIP 1.7.1** 的本地修改版，去掉了
 > 服务器判决、付费门控和「盗版判定」弹窗，让模块内置的功能在本地全部可用。
 >
 > 只用于研究 LSPosed 模块的校验机制，仅供学习交流，请在下载后的24小时内删除
@@ -26,27 +26,28 @@ GPL-3.0 允许收费，但要求衍生作品继续以 GPL 分发、并向接收�
 
 | 项目 | 说明 |
 |---|---|
-| 版本 | 1.7（versionCode 391） |
+| 版本 | 1.7.1（versionCode 392） |
 | 包名 | `io.github.re_televip.televip` |
-| 签名 | 社区重签 `CN=ReTeleVip Unlocked`（与原版、与本仓库 1.6.12 版都不同，**不能覆盖安装**，需先卸载） |
+| 签名 | 社区重签 `CN=ReTeleVip Unlocked`（与官方版、与 1.6.12 版都不同，**不能覆盖安装**；1.7 → 1.7.1 是同一把 key，可直接覆盖升级） |
 | 需要 | LSPosed / Vector（API 102）或 LSPatch；Android 8.1+（minSdk 27） |
-| 大小 | 945,418 字节 |
+| 大小 | 957,706 字节 |
 
 `SHA256SUMS.txt` 里是校验值，装之前建议自己对一遍。
 
 ## 从仓库旧版升级
 
-1.6.12 版和 1.7 版的签名是两把不同的 key，**不能覆盖安装**：
+- 从 **1.7** 升级：同一把 key，直接装 `TeleVip-1.7.1-unlocked.apk` 覆盖即可，设置和作用域都保留。
+- 从 **1.6.12** 或官方版升级：签名不同，**必须卸载**后重装：
 
-1. 卸载旧的 `TeleVip-1.6.12-unlocked.apk`（Telegram 本体保留）。
-2. 安装 Release 里的 `TeleVip-1.7-unlocked.apk`。
+1. 卸载旧版（Telegram 本体保留）。
+2. 安装 Release 里的 `TeleVip-1.7.1-unlocked.apk`。
 3. LSPosed/Vector 里重新给模块勾作用域（卸载模块会清掉勾选）。
 4. 模块设置会丢，重新按需打开；`TeleVip.xml` 里的 `CloneKill*` 等残留键不影响使用。
 
 ## 安装
 
 1. 卸载已安装的 Re: TeleVIP（官方版或其它破解版都行），保留 Telegram 本身。
-2. 安装本仓库 Release 里的 `TeleVip-1.7-unlocked.apk`。
+2. 安装本仓库 Release 里的 `TeleVip-1.7.1-unlocked.apk`。
 3. LSPosed/Vector → 模块 → 启用 **Re: TeleVIP** → 作用域勾选你的 Telegram 客户端。
 4. **强制停止** Telegram，再打开。
 5. 打开 Telegram → 设置 → 顶部应出现 **「Re: TeleVIP 设置 🛸」**。
@@ -59,9 +60,17 @@ GPL-3.0 允许收费，但要求衍生作品继续以 GPL 分发、并向接收�
 
 详见 [PATCHES.md](PATCHES.md)（只列行为变化，不含实现细节）。一句话版：
 
-- 付费状态恒为「已激活」（显示有效期至 2038-01-19，不限制账号数）
-- 不再采信服务器下发的 `CloneKillVerdict`（不再弹 Unauthorized copy、不再把开关全部关掉）
-- 1.7 新增的远端「高级版分级表」不再生效，所有 ⭐ 项按普通功能处理
+- 付费状态恒为「已激活」（显示有效期至 **2100-01-01**，不限制账号数）
+- 不再采信服务器下发的 `CloneKillVerdict`；通知弹窗本体也一并短路（不再弹 Unauthorized copy、开关不会被重置）
+- 模块自报的构建身份伪装成官方签名证书，服务端看到的也是「官方构建」
+- 远端「高级版分级表」不再生效，所有 ⭐ 项按普通功能处理
+
+## 1.7.1 相对 1.7 的变化（上游）
+
+- 修复 LSPatch 嵌入后的启动器图标（新增 `LauncherIcon` / `LauncherIconReceiver`）
+- 设置里加了「检查更新」入口；时间显示改用系统相对时间格式
+- 框架识别细化（区分 `:lspatch` / `:vector`）
+- 校验机制未变，仍为凭证验签 + 订阅状态 + 服务器盗版判决三件套
 
 ## 1.7 相对 1.6.12 的变化（上游）
 
