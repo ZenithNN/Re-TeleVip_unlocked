@@ -1,3 +1,5 @@
+<p align="center"><img src="banner.png" width="640" alt="Re: TeleVIP Unlocked"></p>
+
 # TeleVip — 本地解锁版
 
 Re: TeleVIP 的本地解锁补丁：去掉服务器判决、付费门控和「盗版判定」弹窗，让模块内置功能在本地可用。仅供研究与自用。
