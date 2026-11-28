@@ -3,3 +3,4 @@
 a6f8f17dd852b76e1521414cbceab7343ac7d4b56173e99aee70049190a1605d  TeleVip-1.7.1-unlocked.apk
 fe359488bac1356686c8e8ce5af7194559511dd1dedccaa8ac400ab475c82206  TeleVip-1.7.2-unlocked.apk
 0ee63c6a4439b5ce94569da2ee2331dc6a5b5b9f4565dcf15c15132f84cb43d3  TeleVip-1.8-unlocked.apk
+d744d0badda877790127c3fb3faa7cff071666fedf0f03f0c89a9816bbc4d00f  TeleVip-1.8.1-unlocked.apk
